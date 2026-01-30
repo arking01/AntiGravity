@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GravityFlip</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <h1>GRAVITY FLIP</h1>
+        <canvas id="gameCanvas"></canvas>
+        <div id="ui-layer">
+            <div id="score">Score: 0</div>
+            <div id="start-screen" class="screen">
+                <p>Press SPACE or CLICK to Flip Gravity</p>
+                <p>Avoid the Spikes</p>
+                <button id="start-btn" class="neon-btn">START GAME</button>
+                <button id="test-btn" class="neon-btn secondary">RUN TESTS</button>
+            </div>
+            <div id="game-over-screen" class="screen hidden">
+                <h2>GAME OVER</h2>
+                <p>Final Score: <span id="final-score">0</span></p>
+                <div id="ai-comment">Fetching sarcastic comment...</div>
+                <button id="restart-btn" class="neon-btn">TRY AGAIN</button>
+            </div>
+            
+            <div id="api-key-container">
+                <input type="password" id="api-key-input" placeholder="Enter Gemini API Key (Optional)">
+            </div>
+        </div>
+        <div id="test-results" class="hidden">
+            <h3>Test Results</h3>
+            <ul id="test-list"></ul>
+            <button id="close-tests" class="neon-btn">Close</button>
+        </div>
+    </div>
+    
+    <script src="game.js"></script>
+    <script src="tests.js"></script>
+</body>
+</html>
