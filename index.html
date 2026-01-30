@@ -1,42 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GravityFlip</title>
+    <title>GravityFlip - Connected</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Google API Scripts -->
+    <script src="https://accounts.google.com/gsi/client" onload="handleGisLoad()" async defer></script>
+    <script src="https://apis.google.com/js/api.js" onload="handleClientLoad()"></script>
 </head>
+
 <body>
     <div id="game-container">
         <h1>GRAVITY FLIP</h1>
+        <div id="high-score-corner" class="high-score-display">High Score: 0</div>
+
         <canvas id="gameCanvas"></canvas>
         <div id="ui-layer">
             <div id="score">Score: 0</div>
+
             <div id="start-screen" class="screen">
                 <p>Press SPACE or CLICK to Flip Gravity</p>
-                <p>Avoid the Spikes</p>
+                <input type="text" id="player-name-input" placeholder="Enter Player Name" value="Player 1"
+                    class="neon-input">
                 <button id="start-btn" class="neon-btn">START GAME</button>
-                <button id="test-btn" class="neon-btn secondary">RUN TESTS</button>
+                <div class="divider"></div>
+                <button id="settings-btn" class="neon-btn secondary small">SETTINGS & CLOUD</button>
+                <button id="test-btn" class="neon-btn secondary small">RUN TESTS</button>
+                <p id="drive-status" class="status-text">Local Mode</p>
             </div>
+
             <div id="game-over-screen" class="screen hidden">
                 <h2>GAME OVER</h2>
-                <p>Final Score: <span id="final-score">0</span></p>
+                <div class="score-grid">
+                    <p>Your Score: <span id="final-score">0</span></p>
+                    <p>High Score: <span class="high-score-display">0</span></p>
+                </div>
                 <div id="ai-comment">Fetching sarcastic comment...</div>
                 <button id="restart-btn" class="neon-btn">TRY AGAIN</button>
             </div>
-            
-            <div id="api-key-container">
-                <input type="password" id="api-key-input" placeholder="Enter Gemini API Key (Optional)">
+
+            <!-- Settings Modal -->
+            <div id="settings-modal" class="screen hidden overlay">
+                <h3>CLOUD SETTINGS</h3>
+                <div class="input-group">
+                    <label>Gemini API Key</label>
+                    <input type="password" id="api-key-input" placeholder="AI Key (Optional)">
+                </div>
+                <div class="input-group">
+                    <label>Google Client ID</label>
+                    <input type="text" id="client-id-input" placeholder="OAuth Client ID">
+                </div>
+                <div class="input-group">
+                    <label>Google Project API Key</label>
+                    <input type="password" id="project-api-key-input" placeholder="Project API Key">
+                </div>
+                <button id="google-login-btn" class="neon-btn google-btn" disabled>Loading Google Services...</button>
+                <button id="close-settings-btn" class="neon-btn secondary">CLOSE</button>
             </div>
         </div>
+
         <div id="test-results" class="hidden">
             <h3>Test Results</h3>
             <ul id="test-list"></ul>
             <button id="close-tests" class="neon-btn">Close</button>
         </div>
     </div>
-    
+
+    <script src="drive.js"></script>
     <script src="game.js"></script>
     <script src="tests.js"></script>
 </body>
+
 </html>

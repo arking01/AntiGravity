@@ -1,9 +1,11 @@
 :root {
     --bg-color: #050505;
-    --primary-color: #0ff; /* Cyan */
-    --secondary-color: #f0f; /* Magenta */
+    --primary-color: #0ff;
+    /* Cyan */
+    --secondary-color: #f0f;
+    /* Magenta */
     --text-color: #fff;
-    --font-family: 'Courier New', Courier, monospace; /* Terminal/Retro feel */
+    --font-family: 'Courier New', Courier, monospace;
 }
 
 body {
@@ -51,7 +53,7 @@ canvas {
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none; /* Let clicks pass through to canvas when playing */
+    pointer-events: none;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -73,10 +75,11 @@ canvas {
     border: 1px solid var(--primary-color);
     box-shadow: 0 0 15px var(--primary-color);
     text-align: center;
-    pointer-events: auto; /* Enable clicks on buttons */
+    pointer-events: auto;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
+    /* Adjusted gap */
     align-items: center;
 }
 
@@ -115,30 +118,6 @@ canvas {
     box-shadow: 0 0 20px var(--secondary-color);
 }
 
-#api-key-container {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    pointer-events: auto;
-}
-
-#api-key-input {
-    background: rgba(0,0,0,0.5);
-    border: 1px solid #333;
-    color: #888;
-    padding: 5px;
-    width: 200px;
-    text-align: center;
-    font-family: var(--font-family);
-}
-
-#api-key-input:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    color: #fff;
-}
-
 #ai-comment {
     font-style: italic;
     color: var(--secondary-color);
@@ -152,7 +131,7 @@ canvas {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: rgba(0,0,0,0.95);
+    background: rgba(0, 0, 0, 0.95);
     border: 2px solid var(--secondary-color);
     padding: 20px;
     width: 80%;
@@ -175,4 +154,121 @@ canvas {
 
 .test-fail {
     color: #f00;
+}
+
+/* --- New UI Styles --- */
+
+#high-score-corner {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 18px;
+    color: var(--secondary-color);
+    text-shadow: 0 0 5px var(--secondary-color);
+    z-index: 10;
+}
+
+.neon-input {
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid var(--primary-color);
+    color: #fff;
+    padding: 10px;
+    font-family: var(--font-family);
+    font-size: 16px;
+    text-align: center;
+    width: 250px;
+    margin-bottom: 5px;
+    box-shadow: 0 0 5px var(--primary-color);
+}
+
+.neon-input:focus {
+    outline: none;
+    box-shadow: 0 0 15px var(--primary-color);
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.input-group label {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: 90%;
+    background: #111;
+    border: 1px solid #444;
+    color: #ccc;
+    padding: 8px;
+    font-family: var(--font-family);
+}
+
+.divider {
+    width: 100%;
+    height: 1px;
+    background: #333;
+    margin: 10px 0;
+}
+
+.small {
+    font-size: 14px;
+    padding: 5px 10px;
+}
+
+.overlay {
+    z-index: 200;
+    width: 320px;
+    position: relative;
+    /* Ensure it stays within ui-layer stacking if needed, but ui-layer centered it */
+}
+
+.google-btn {
+    border-color: #4285F4;
+    color: #4285F4;
+    box-shadow: 0 0 5px #4285F4;
+    width: 100%;
+}
+
+.google-btn:hover {
+    background: #4285F4;
+    color: #fff;
+    box-shadow: 0 0 15px #4285F4;
+}
+
+.google-btn:disabled {
+    border-color: #333;
+    color: #555;
+    box-shadow: none;
+    cursor: not-allowed;
+}
+
+.success {
+    border-color: #0f0;
+    color: #0f0;
+    box-shadow: 0 0 5px #0f0;
+}
+
+.status-text {
+    font-size: 12px;
+    color: #666;
+    margin: 5px 0 0 0;
+}
+
+.score-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.score-grid p {
+    margin: 5px 0;
 }
